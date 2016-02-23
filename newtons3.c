@@ -5,7 +5,7 @@
 /* 
 
 Program Description:
-This program uses Newton's Method to find the real roots of any 2nd degree polynomial 
+This program uses Newton's Method to find the real roots of a 2nd degree polynomial 
 with real roots.  Please note, the program will break if you enter a 2nd degree 
 polynomial with complex roots. Learn more about Newton's Method here: 
 http://tutorial.math.lamar.edu/Classes/CalcI/NewtonsMethod.aspx
@@ -23,7 +23,7 @@ double find_root(double x_intercept_tan, double x_vertex, double a, double b, do
 
 int main( ) {
 
-	double a, b, c, d, e, x1, x2, x_intercept_tan, y, x_vertex, difference;
+	double a, b, c, d, e, x1, x2, x_intercept_tan, y, x_vertex, y_vertex, difference;
 	char *correct_coefficient_answer; 
 	int correct_type, correct_coefficient, i;
 
@@ -33,15 +33,18 @@ int main( ) {
 
 	while(correct_coefficient == 0){ 
 
-		//user enters coeffients for second degree polynomial
+		//user enters integer coeffients for second degree polynomial
 		printf("\nEnter the coefficients of a 2nd degree \npolynomial to find it's roots. \nIf the polynomial is ax^2 + bx +c, \nenter the integer value for coefficient a:\n");
 	   	scanf("%lf", &a);
+	   	a = floor(a);
 		
 		printf("Enter the integer value for coefficient b:\n");
 		scanf("%lf", &b);
+		b = floor(b);
 
 		printf("Enter the integer value for coefficient c:\n");
 		scanf("%lf", &c);
+		c = floor(c);
 
 		//verify that user has entered the correct coefficients. 
 		//Repeat question until user answers with "1" or "0" - entering non int value breaks program.
@@ -62,20 +65,32 @@ int main( ) {
 	//line at that x value
 	x_vertex = -(b/(2*a)); 
 
-	//find the first root of the 2nd degree polynomial
-	x1 = find_root(x_intercept_tan, x_vertex, a, b, c); //won't return double
+	//find value of y at vertex
+	y_vertex = a*x_vertex*x_vertex + b*x_vertex +c;
 
-	//to find the second x intercept, make sure the new x_intercept_tan starts on the other side of the 
-	//parabola's vertex, so that it will interate to find a different x intercept
-	difference = x_vertex - x1;
-	x_intercept_tan = x_vertex + difference;
+	if(y_vertex == 0){//root is x value at vertex
 
-	//find the second root of the 2nd degree polynomial:
-	x2 = find_root(x_intercept_tan, x_vertex, a, b, c);
+		printf("\n\nx = %10.10f is the only root of y = %6.0fx^2 + %6.0fx + %6.0f \n\n\n", x_vertex, a, b, c);  
 
-	//print results:
-	printf("\n\nx = %10.10f and x = %10.10f are the roots of y = %6.0fx^2 + %6.0fx + %6.0f \n\n\n", x1, x2, a, b, c);  
+	}else if((a>0 && y_vertex<0) || (a<0 && y_vertex>0)){//there are two roots
 
+		//find the first root of the 2nd degree polynomial
+		x1 = find_root(x_intercept_tan, x_vertex, a, b, c); //won't return double
+
+		//to find the second x intercept, make sure the new x_intercept_tan starts on the other side of the 
+		//parabola's vertex, so that it will interate to find a different x intercept
+		difference = x_vertex - x1;
+		x_intercept_tan = x_vertex + difference;
+
+		//find the second root of the 2nd degree polynomial:
+		x2 = find_root(x_intercept_tan, x_vertex, a, b, c);
+
+		//print results:
+		printf("\n\nx = %10.10f and x = %10.10f are the roots of y = %6.0fx^2 + %6.0fx + %6.0f \n\n\n", x1, x2, a, b, c);  
+
+	}else{//no real roots
+		printf("\n\n There are no real roots, this 2nd degree polynomial does not intersect with the x-axis.\n");
+	}
    return 0;
 }
 
