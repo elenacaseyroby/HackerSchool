@@ -99,7 +99,7 @@ int main( ) {
 		printf("\n\nx = %10.10f and x = %10.10f are the roots of y = %6.0fx^2 + %6.0fx + %6.0f \n\n\n", x1, x2, a, b, c);  
 
 	}else{//then there are no real roots
-		printf("\n\n There are no real roots, this 2nd degree polynomial does not intersect with the x-axis.\n");
+		printf("\n\n There are no real roots of y = %6.0fx^2 + %6.0fx + %6.0f \n\n\n", a, b, c);
 	}
    return 0;
 }
