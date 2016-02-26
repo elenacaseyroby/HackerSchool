@@ -70,9 +70,7 @@ int main( ) {
 			}
 		}
 	}
-	//Find value of x at parabola's vertex.  Make sure x_intercept_tan is never assigned that value
-	//otherwise it will break the program because there will be no x intercept of the tangent 
-	//line at that x value
+	//Find value of x at parabola's vertex.  
 	x_vertex = -(b/(2*a)); 
 
 	//find value of y at vertex
@@ -85,7 +83,7 @@ int main( ) {
 	}else if((a>0 && y_vertex<0) || (a<0 && y_vertex>0)){//then there are two roots
 
 		//find the first root of the 2nd degree polynomial
-		x1 = find_root(x_intercept_tan, x_vertex, a, b, c); //won't return double
+		x1 = find_root(x_intercept_tan, x_vertex, a, b, c); 
 
 		//to find the second x intercept, make sure the new x_intercept_tan starts on the other side of the 
 		//parabola's vertex, so that it will interate to find a different x intercept
@@ -122,6 +120,9 @@ double find_root(double x_intercept_tan, double x_vertex, double a, double b, do
 	//we want value of x as y approaches 0, so we keep iterating until y is 0 up to the 10th decimal place
 	while( yfloor != 0){ 
 
+		//assign new value to x if x is value at vertex, otherwise it will 
+		//break the program because there will be no x intercept of the tangent 
+		//line at that x value
 		if (x_intercept_tan == x_vertex){
 			x_intercept_tan = rand() % 100;
 		}
@@ -135,7 +136,8 @@ double find_root(double x_intercept_tan, double x_vertex, double a, double b, do
 
 		//print value of x and y at each iteration so we can see y approach 0 as x approaches the root
 		printf("\n x = %10.10f y = %10.10f", x, y);
-		//the value of x becomes our new value of x_intercept_tan and we start over
+		
+		//the value of x becomes our new value of x_intercept_tan
 		x_intercept_tan = x;
 
 	}
