@@ -11,11 +11,11 @@ Learn more about Newton's Method here:
 http://tutorial.math.lamar.edu/Classes/CalcI/NewtonsMethod.aspx
 
 Test Cases:
-1.
-2.
-3.
-4.
-5. 
+1. y = 1x^2 + 4 + 4 root is x = -2
+2. y = -3x^2 + 4x + 4 roots are x = 2 x = -.6666666667
+3. y = -10x^2 + 54x + 0 roots are x = 0 and x = 5.4
+4. y = 1x^2 + 23x - 108 roots are x = -27 and x = 4 
+5. y = 1x^2 + 0x + 6 should have no real roots.
 
 */
 
@@ -46,12 +46,13 @@ int main( ) {
 		scanf("%lf", &c);
 		c = floor(c);
 
-		//verify that user has entered the correct coefficients. 
-		//Repeat question until user answers with "1" or "0" - entering non int value breaks program.
+		//Verify that user has entered the correct coefficients. 
+		//Repeat question until user answers with "1" or "0". Warning: entering non int value breaks program.
 		correct_type = 0;
 		while(correct_type == 0){ 
 			
 			printf("Do you want to find a root for this polynomial: %6.0fx^2 + %6.0fx + %6.0f ? \nPlease enter '1' for yes or '0' for no:\n", a, b, c);
+			
 			scanf("%d", &correct_coefficient); 
 			
 			if (correct_coefficient == 1 || correct_coefficient == 0){ 
@@ -60,7 +61,7 @@ int main( ) {
 			}
 		}
 	}
-	//find value of x at parabola's vertex.  Make sure x_intercept_tan is never assigned that value
+	//Find value of x at parabola's vertex.  Make sure x_intercept_tan is never assigned that value
 	//otherwise it will break the program because there will be no x intercept of the tangent 
 	//line at that x value
 	x_vertex = -(b/(2*a)); 
@@ -68,11 +69,11 @@ int main( ) {
 	//find value of y at vertex
 	y_vertex = a*x_vertex*x_vertex + b*x_vertex +c;
 
-	if(y_vertex == 0){//root is x value at vertex
+	if(y_vertex == 0){//then root is x value at vertex
 
 		printf("\n\nx = %10.10f is the only root of y = %6.0fx^2 + %6.0fx + %6.0f \n\n\n", x_vertex, a, b, c);  
 
-	}else if((a>0 && y_vertex<0) || (a<0 && y_vertex>0)){//there are two roots
+	}else if((a>0 && y_vertex<0) || (a<0 && y_vertex>0)){//then there are two roots
 
 		//find the first root of the 2nd degree polynomial
 		x1 = find_root(x_intercept_tan, x_vertex, a, b, c); //won't return double
@@ -88,7 +89,7 @@ int main( ) {
 		//print results:
 		printf("\n\nx = %10.10f and x = %10.10f are the roots of y = %6.0fx^2 + %6.0fx + %6.0f \n\n\n", x1, x2, a, b, c);  
 
-	}else{//no real roots
+	}else{//then there are no real roots
 		printf("\n\n There are no real roots, this 2nd degree polynomial does not intersect with the x-axis.\n");
 	}
    return 0;
