@@ -5,9 +5,9 @@
 /* 
 
 Program Description:
-This program uses Newton's Method to find the real roots of a 2nd degree polynomial 
-with real roots.  Please note, the program will break if you enter a 2nd degree 
-polynomial with complex roots. Learn more about Newton's Method here: 
+This program uses Newton's Method to find the real roots of a 2nd degree polynomial.  
+It only accepts 2nd degree polynomials with integer valued coefficients. 
+Learn more about Newton's Method here: 
 http://tutorial.math.lamar.edu/Classes/CalcI/NewtonsMethod.aspx
 
 Test Cases:
@@ -33,7 +33,7 @@ int main( ) {
 
 	while(correct_coefficient == 0){ 
 
-		//user enters integer coeffients for second degree polynomial
+		//user enters integer values for coeffients of second degree polynomial
 		printf("\nEnter the coefficients of a 2nd degree \npolynomial to find it's roots. \nIf the polynomial is ax^2 + bx +c, \nenter the integer value for coefficient a:\n");
 	   	scanf("%lf", &a);
 	   	a = floor(a);
