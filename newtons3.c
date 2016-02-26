@@ -11,11 +11,20 @@ Learn more about Newton's Method here:
 http://tutorial.math.lamar.edu/Classes/CalcI/NewtonsMethod.aspx
 
 Test Cases:
-1. y = 1x^2 + 4 + 4 root is x = -2
-2. y = -3x^2 + 4x + 4 roots are x = 2 x = -.6666666667
-3. y = -10x^2 + 54x + 0 roots are x = 0 and x = 5.4
-4. y = 1x^2 + 23x - 108 roots are x = -27 and x = 4 
-5. y = 1x^2 + 0x + 6 should have no real roots.
+1. input: a = 1, b = 4, c = 4
+output: y = 1x^2 + 4 + 4 root is x = -2
+
+2. input: a = -3, b = 4, c = 4
+output: y = -3x^2 + 4x + 4 roots are x = 2 x = -.6666666667
+
+3. input: a = -10, b = 54, c = 0
+output: y = -10x^2 + 54x + 0 roots are x = 0 and x = 5.4
+
+4. input: a = 1, b = 23, c = -108
+output: y = 1x^2 + 23x - 108 roots are x = -27 and x = 4 
+
+5. input: a = 1, b = 0, c = 6
+output: y = 1x^2 + 0x + 6 should have no real roots.
 
 */
 
